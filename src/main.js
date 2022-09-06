@@ -1,19 +1,22 @@
-const myGuss = Math.floor(Math.random() * 20) + 1;
-let guesses = 0;
-let guess;
+const canvas = document.querySelector("#board canvas");
 
-while( guess !== myGuss ) {
+const ctx = canvas.getContext("2d");
 
-    guess = parseInt(prompt("What number I'm thinking of", 10));
-    guesses++;
+const canvasWidth = ctx.canvas.width;
+const canvasHeight = ctx.canvas.height;
 
-    if( guess > myGuss) {
-        alert('Higher');
-    }  else if ( guess < myGuss ) {
-        alert('Lower')
-    }
+const width = 80;
+const height = 40;
 
+const tiles = 5;
 
+ctx.strokeStyle = "black";
+ctx.fillStyle = "pink";
+
+for (let i = 0; i <= 5; i++) {
+  for (let j = 0; j <= 5; j++) {
+    const x = width * j;
+    const y = height * i;
+    ctx.strokeRect(x, y, width, height);
+  }
 }
-
-alert(`Well done. You completed the game in ${guesses} guesses.`);
